@@ -3,7 +3,7 @@ import classes from './MainNavigation.module.css';
 const MainNavigation = () => {
 	return (
 		<header className={classes.header}>
-			<div className={classes.logo}>React Student Manager</div>
+			<div className={classes.logo}>R.S.M</div>
 			<nav>
 				<ul>
 					<li>
