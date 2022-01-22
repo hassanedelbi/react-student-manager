@@ -1,12 +1,10 @@
 import Card from '../ui/Card';
-const Student = () => {
+const Student = (props) => {
 	return (
 		<li>
 			<Card>
-				<h3>Full Name</h3>
-				<h4>Email</h4>
-				<h4>Location</h4>
-				<h4>Department</h4>
+				<h3>Full Name{props.name}</h3>
+				<h4>Email{props.email}</h4>
 			</Card>
 		</li>
 	);
