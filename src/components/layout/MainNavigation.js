@@ -13,6 +13,7 @@ const MainNavigation = () => {
 						<Link to={'/new-student'}>New Student</Link>
 					</li>
 					<li>
+						#TODO : Add Courses and features
 						<Link to={'/courses'}>Courses</Link>
 					</li>
 				</ul>
