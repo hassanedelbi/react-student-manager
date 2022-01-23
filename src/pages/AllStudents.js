@@ -4,6 +4,7 @@ import StudentList from '../components/students/StudentList';
 const AllStudentsPage = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [loadedStudents, setLoadedStudents] = useState([]);
+
 	useEffect(() => {
 		setIsLoading(true);
 		fetch(
@@ -14,7 +15,6 @@ const AllStudentsPage = () => {
 			})
 			.then((data) => {
 				const students = [];
-
 				for (const key in data) {
 					const student = {
 						id: key,
@@ -22,12 +22,12 @@ const AllStudentsPage = () => {
 					};
 					students.push(student);
 				}
-				setIsLoading(false);
 				setLoadedStudents(students);
+				setIsLoading(false);
 			});
 	}, []);
 
-	const students = [
+	const students_DUMMY = [
 		{
 			id: '1',
 			name: 'Name1',
@@ -47,11 +47,18 @@ const AllStudentsPage = () => {
 			courses: ['3'],
 		},
 	];
+
+	if (isLoading) {
+		return (
+			<section>
+				<p>Loading ...</p>
+			</section>
+		);
+	}
 	return (
-		<div>
-			All Students
+		<section>
 			<StudentList students={loadedStudents} />
-		</div>
+		</section>
 	);
 };
 

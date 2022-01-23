@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import Card from '../ui/Card';
 import classes from './NewStudentForm.module.css';
-import Student from './Student';
 const NewStudentForm = (props) => {
 	const nameInputRef = useRef();
 	const emailInputRef = useRef();
@@ -10,10 +9,11 @@ const NewStudentForm = (props) => {
 		event.preventDefault();
 		const enteredName = nameInputRef.current.value;
 		const enteredEmail = emailInputRef.current.value;
-
+		const enteredCourses = ['0'];
 		const studentData = {
 			name: enteredName,
 			email: enteredEmail,
+			courses: enteredCourses,
 		};
 		props.onAddStudent(studentData);
 	}

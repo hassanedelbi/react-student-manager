@@ -8,6 +8,7 @@ const StudentList = (props) => {
 				<Student
 					key={student.id}
 					id={student.id}
+					name={student.name}
 					email={student.email}
 					courses={student.courses}
 				/>

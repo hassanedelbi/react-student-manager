@@ -17,8 +17,11 @@ const Course = (props) => {
 	];
 
 	function getCourseById(courseId) {
-		let a = courses.find((course) => course.id === courseId);
-		return a.name;
+		if (courseId === '0') return 'No Courses Yet';
+		else {
+			let a = courses.find((course) => course.id === courseId);
+			return a.name;
+		}
 	}
 	return <h4>{getCourseById(props.id)}</h4>;
 };
