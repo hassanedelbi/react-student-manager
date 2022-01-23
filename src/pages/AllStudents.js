@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import StudentList from '../components/students/StudentList';
 
 const AllStudentsPage = () => {
+	const [isLoading, setIsLoading] = useState(true);
+	const [loadedStudents, setLoadedStudents] = useState([]);
+	useEffect(() => {
+		setIsLoading(true);
+		fetch(
+			'https://react-student-manager-default-rtdb.firebaseio.com/students.json'
+		)
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				const students = [];
+
+				for (const key in data) {
+					const student = {
+						id: key,
+						...data[key],
+					};
+					students.push(student);
+				}
+				setIsLoading(false);
+				setLoadedStudents(students);
+			});
+	}, []);
+
 	const students = [
 		{
 			id: '1',
@@ -25,7 +50,7 @@ const AllStudentsPage = () => {
 	return (
 		<div>
 			All Students
-			<StudentList students={students} />
+			<StudentList students={loadedStudents} />
 		</div>
 	);
 };
