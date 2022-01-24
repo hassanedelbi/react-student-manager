@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CoursesContext from '../../store/courses-context';
 
 const Course = (props) => {
+	const coursesCtx = useContext(CoursesContext);
+	let html = '';
 	const courses = [
 		{
 			id: '1',
@@ -23,6 +26,24 @@ const Course = (props) => {
 			return a.name;
 		}
 	}
-	return <h4>{getCourseById(props.id)}</h4>;
+
+	function deleteMe(courseId, studentId) {
+		console.log('course id is', courseId, 'student id', studentId);
+		coursesCtx.removeCourseFromStudent(courseId, studentId);
+		console.log('end context');
+	}
+
+	return (
+		<>
+			{getCourseById(props.id)}
+			<button
+				onClick={() => {
+					deleteMe(props.id, props.studentId);
+				}}
+			>
+				x
+			</button>
+		</>
+	);
 };
 export default Course;
