@@ -3,9 +3,7 @@ import { createContext, useState } from 'react';
 const CoursesContext = createContext({
 	courses: [],
 	totalCourses: 0,
-	removeCourseFromStudent: (courseId, studentId) => {
-		console.log('mishkil');
-	},
+	removeCourseFromStudent: (courseId, studentId) => {},
 });
 
 export const CoursesContextProvider = (props) => {
